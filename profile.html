@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 200px;
+            height: 250px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="text" placeholder="Enter the text" id="name">
+        <input type="text" placeholder="Enter image src" id="source">
+        <input type="text" placeholder="Enter Bio" id="bio">
+        <button onclick="updateBio()"><b>Submit</b></button>
+    </div>
+    <div>
+        <h1 id="h1">Name</h1>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2zd3FXkeqGxhBJdT6URQ20YQ-Zpx3Kq46Yg&s" alt="img" id="src">
+        <h2 id="h2">Bio</h2>
+    </div>
+    <script>
+        function updateBio(){
+            // document.getElementById("h1").innerHTML = document.getElementById("name").value;
+            // document.getElementById("src").src = document.getElementById("source").value;
+            // document.getElementById("h2").innerHTML = document.getElementById("bio").value;
+            let Name = document.getElementById("name").value;
+            let img = document.getElementById("source").value;
+            let bio = document.getElementById("bio").value;
+            document.getElementById("h1").innerHTML = Name;
+            document.getElementById("src").src = img;
+            document.getElementById("h2").innerHTML = bio;
+        }
+    </script>
+
+
+</body>
+</html>
