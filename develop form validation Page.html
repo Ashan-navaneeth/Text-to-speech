@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation form</title>
+    <style>
+        label, input{
+            display: block;
+        }
+        span{
+            color: red;
+        }
+     
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <form onsubmit="return submitForm()">
+        <label for="name">Name</label>
+        <input type="text" id="name">
+        <span id="error"></span>
+        <label for="number">Number</label>
+        <input type="number" id="number">
+        <span id="error2"></span>
+        <label for="email">Email</label>
+        <input type="email" id="email">
+        <span id="error3"></span>
+        <label for="password">Password</label>
+        <input type="password" id="password">
+        <input type = "checkbox" onclick="password()">Show Password
+        <span id="error4"></span>
+        <input type="submit">
+
+
+    </form>
+</body>
+
+
+<script>
+    function submitForm() {
+        // Reset all error messages
+        document.getElementById("error").innerHTML = "";
+        document.getElementById("error2").innerHTML = "";
+        document.getElementById("error3").innerHTML = "";
+        document.getElementById("error4").innerHTML = "";
+    
+        let name = document.getElementById("name").value.trim();
+        let number = document.getElementById("number").value.trim();
+        let email = document.getElementById("email").value.trim();
+        let password = document.getElementById("password").value;
+    
+        // Name validation
+        if (name === "") {
+            document.getElementById("error").innerHTML = "Name is required";
+            return false;
+        }
+        else {
+            return true;
+        }
+    
+        // Number validation
+        if (number === "") {
+            document.getElementById("error2").innerHTML = "Number is required";
+            return false;
+        } else if (!/^\d{10}$/.test(number)) {
+            document.getElementById("error2").innerHTML = "Enter a valid 10-digit number";
+            return false;
+        }
+        else if (!/^\d{10}$/.test(number)) {
+            document.getElementById("error2").innerHTML = "Enter a valid 10-digit number";
+            return false;
+        }
+        else{
+            return true;
+        }
+    
+        // Email validation
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (email === "") {
+            document.getElementById("error3").innerHTML = "Email is required";
+            return false;
+        } else if (!emailPattern.test(email)) {
+            document.getElementById("error3").innerHTML = "Enter a valid email";
+            return false;
+        }
+        else{
+            return true;
+        }
+    
+        // Password validation
+        if (password === "") {
+            document.getElementById("error4").innerHTML = "Password is required";
+            return false;
+        } else if (password.length < 8) {
+            document.getElementById("error4").innerHTML = "Password must be at least 8 characters";
+            return false;
+        } else if (!/\d/.test(password)) {
+            document.getElementById("error4").innerHTML = "Password must contain at least one number";
+            return false;
+        } else if (!/[A-Z]/.test(password)) {
+            document.getElementById("error4").innerHTML = "Password must contain at least one uppercase letter";
+            return false;
+        } else if (!/[a-z]/.test(password)) {
+            document.getElementById("error4").innerHTML = "Password must contain at least one lowercase letter";
+            return false;
+        }
+        else if (!/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password)) {
+            document.getElementById("error4").innerHTML = "Password must contain at least one special character";
+            return false;
+        }
+        else {
+            return true;
+        }
+        
+        function togglePassword() {
+            const passwordField = document.getElementById("password");
+            const toggleButton = document.getElementById("togglePassword");
+
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                toggleButton.textContent = "Hide";
+            } else {
+                passwordField.type = "password";
+                toggleButton.textContent = "Show";
+            }
+        }
+    </script>
+    
+
+
+</html>
